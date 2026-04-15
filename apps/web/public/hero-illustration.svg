@@ -1,0 +1,40 @@
+<svg width="1200" height="720" viewBox="0 0 1200 720" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="g1" x1="0" y1="0" x2="1200" y2="720" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#7C3AED"/>
+      <stop offset="0.45" stop-color="#06B6D4"/>
+      <stop offset="1" stop-color="#22C55E"/>
+    </linearGradient>
+    <linearGradient id="g2" x1="0" y1="720" x2="1200" y2="0" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#111827" stop-opacity="0.0"/>
+      <stop offset="0.6" stop-color="#111827" stop-opacity="0.25"/>
+      <stop offset="1" stop-color="#111827" stop-opacity="0.0"/>
+    </linearGradient>
+    <filter id="blur" x="-40" y="-40" width="1280" height="800" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feGaussianBlur stdDeviation="20"/>
+    </filter>
+  </defs>
+
+  <rect x="0" y="0" width="1200" height="720" rx="36" fill="url(#g1)"/>
+  <rect x="0" y="0" width="1200" height="720" rx="36" fill="url(#g2)"/>
+
+  <g opacity="0.55" filter="url(#blur)">
+    <circle cx="260" cy="210" r="160" fill="#F97316"/>
+    <circle cx="930" cy="170" r="210" fill="#60A5FA"/>
+    <circle cx="860" cy="560" r="240" fill="#34D399"/>
+  </g>
+
+  <!-- Abstract mountains / waves -->
+  <path d="M0 520C130 470 200 560 330 520C460 480 520 420 650 460C780 500 820 600 950 560C1080 520 1120 470 1200 500V720H0V520Z" fill="#0B1220" fill-opacity="0.35"/>
+  <path d="M0 560C160 520 260 610 400 570C540 530 600 460 740 500C880 540 920 650 1060 610C1140 588 1175 565 1200 575V720H0V560Z" fill="#0B1220" fill-opacity="0.28"/>
+
+  <!-- Dots -->
+  <g opacity="0.7">
+    <circle cx="130" cy="120" r="4" fill="#FFFFFF" fill-opacity="0.8"/>
+    <circle cx="170" cy="170" r="3" fill="#FFFFFF" fill-opacity="0.7"/>
+    <circle cx="220" cy="120" r="2.5" fill="#FFFFFF" fill-opacity="0.65"/>
+    <circle cx="1030" cy="110" r="3.5" fill="#FFFFFF" fill-opacity="0.75"/>
+    <circle cx="980" cy="210" r="2.5" fill="#FFFFFF" fill-opacity="0.6"/>
+    <circle cx="1085" cy="210" r="2.5" fill="#FFFFFF" fill-opacity="0.6"/>
+  </g>
+</svg>

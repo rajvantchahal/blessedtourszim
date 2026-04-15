@@ -1,0 +1,33 @@
+<svg width="1200" height="800" viewBox="0 0 1200 800" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1200" y2="800" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#22C55E"/>
+      <stop offset="0.55" stop-color="#06B6D4"/>
+      <stop offset="1" stop-color="#F59E0B"/>
+    </linearGradient>
+    <filter id="blur" x="-40" y="-40" width="1280" height="880" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feGaussianBlur stdDeviation="22"/>
+    </filter>
+  </defs>
+
+  <rect width="1200" height="800" rx="48" fill="url(#bg)"/>
+
+  <g opacity="0.55" filter="url(#blur)">
+    <circle cx="300" cy="240" r="220" fill="#3B82F6"/>
+    <circle cx="950" cy="260" r="240" fill="#A855F7"/>
+    <circle cx="760" cy="650" r="290" fill="#F97316"/>
+  </g>
+
+  <!-- ticket tag -->
+  <path d="M370 300H850C874.3 300 894 319.7 894 344V456C870 456 850 476 850 500C850 524 870 544 894 544V656C894 680.3 874.3 700 850 700H370C345.7 700 326 680.3 326 656V544C350 544 370 524 370 500C370 476 350 456 326 456V344C326 319.7 345.7 300 370 300Z" fill="#0B1220" fill-opacity="0.22"/>
+  <path d="M610 330V670" stroke="#FFFFFF" stroke-opacity="0.55" stroke-width="14" stroke-dasharray="18 18" stroke-linecap="round"/>
+
+  <g fill="#FFFFFF" fill-opacity="0.8">
+    <rect x="370" y="380" width="200" height="44" rx="22"/>
+    <rect x="370" y="450" width="240" height="44" rx="22"/>
+    <rect x="370" y="520" width="170" height="44" rx="22"/>
+
+    <rect x="650" y="410" width="200" height="60" rx="30"/>
+    <rect x="650" y="500" width="170" height="44" rx="22"/>
+  </g>
+</svg>

@@ -1,159 +1,120 @@
-# Turborepo starter
+# BlessedToursZim Monorepo
 
-This Turborepo starter is maintained by the Turborepo core team.
+Turborepo + pnpm workspaces monorepo.
 
-## Using this example
+## Apps
 
-Run the following command:
+- `apps/web`: Next.js web app
+- `apps/docs`: Next.js docs app
+- `apps/server`: Fastify API (TypeScript) + MongoDB + JWT
 
-```sh
-npx create-turbo@latest
-```
+## Packages
 
-## What's inside?
+- `packages/ui`: shared UI components
+- `packages/shared`: shared types + role system
+- `packages/db`: MongoDB helpers
 
-This Turborepo includes the following packages/apps:
+## Prerequisites
 
-### Apps and Packages
+- Node.js + pnpm
+- MongoDB (local) — easiest with Docker OR any local Mongo you manage
 
-- `docs`: a [Next.js](https://nextjs.org/) app
-- `web`: another [Next.js](https://nextjs.org/) app
-- `@repo/ui`: a stub React component library shared by both `web` and `docs` applications
-- `@repo/eslint-config`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
-- `@repo/typescript-config`: `tsconfig.json`s used throughout the monorepo
+## MongoDB (Compass setup)
 
-Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
+MongoDB Compass is just a GUI client — the server still needs a MongoDB instance running.
 
-### Utilities
+### Option A (recommended): run MongoDB via Docker
 
-This Turborepo has some additional tools already setup for you:
-
-- [TypeScript](https://www.typescriptlang.org/) for static type checking
-- [ESLint](https://eslint.org/) for code linting
-- [Prettier](https://prettier.io) for code formatting
-
-### Build
-
-To build all apps and packages, run the following command:
-
-With [global `turbo`](https://turborepo.dev/docs/getting-started/installation#global-installation) installed (recommended):
+From the repo root:
 
 ```sh
-cd my-turborepo
-turbo build
+docker-compose up -d
 ```
 
-Without global `turbo`, use your package manager:
+If your system uses the newer Docker Compose plugin, use:
 
 ```sh
-cd my-turborepo
-npx turbo build
-pnpm dlx turbo build
-pnpm exec turbo build
+docker compose up -d
 ```
 
-You can build a specific package by using a [filter](https://turborepo.dev/docs/crafting-your-repository/running-tasks#using-filters):
+In MongoDB Compass, connect to:
 
-With [global `turbo`](https://turborepo.dev/docs/getting-started/installation#global-installation) installed:
+```text
+mongodb://localhost:27017
+```
+
+### Option B: your own local MongoDB
+
+If you already have MongoDB running on your machine, just connect Compass to your local connection string (often `mongodb://localhost:27017`).
+
+If you have MongoDB installed but not running, you can start it manually (no admin rights required) from the repo root:
 
 ```sh
-turbo build --filter=docs
+mkdir -p .mongo-data
+
+# If `mongod` is on your PATH
+mongod --dbpath .mongo-data --bind_ip 127.0.0.1 --port 27017
 ```
 
-Without global `turbo`:
+## Server environment
+
+Create `apps/server/.env` (IMPORTANT: place it inside `apps/server`, not repo root):
 
 ```sh
-npx turbo build --filter=docs
-pnpm exec turbo build --filter=docs
-pnpm exec turbo build --filter=docs
+cp apps/server/.env.example apps/server/.env
 ```
 
-### Develop
+Then set at least:
 
-To develop all apps and packages, run the following command:
+```text
+MONGODB_URI=mongodb://127.0.0.1:27017/blessedtourszim
+JWT_SECRET=replace-with-any-long-random-string
+PORT=5000
+```
 
-With [global `turbo`](https://turborepo.dev/docs/getting-started/installation#global-installation) installed (recommended):
+By default the server loads env files from `apps/server`.
+
+If you prefer keeping a single `.env` in the repo root, set `BTS_ENV_ROOT` to the repo root when starting the server.
+
+## Run
+
+Install deps:
 
 ```sh
-cd my-turborepo
-turbo dev
+pnpm install
 ```
 
-Without global `turbo`, use your package manager:
+Run everything:
 
 ```sh
-cd my-turborepo
-npx turbo dev
-pnpm exec turbo dev
-pnpm exec turbo dev
+pnpm dev
 ```
 
-You can develop a specific package by using a [filter](https://turborepo.dev/docs/crafting-your-repository/running-tasks#using-filters):
-
-With [global `turbo`](https://turborepo.dev/docs/getting-started/installation#global-installation) installed:
+Or run only the API server:
 
 ```sh
-turbo dev --filter=web
+pnpm --filter server dev
 ```
 
-Without global `turbo`:
+Or run only the web app:
 
 ```sh
-npx turbo dev --filter=web
-pnpm exec turbo dev --filter=web
-pnpm exec turbo dev --filter=web
+pnpm --filter web dev
 ```
 
-### Remote Caching
+## Troubleshooting
 
-> [!TIP]
-> Vercel Remote Cache is free for all plans. Get started today at [vercel.com](https://vercel.com/signup?utm_source=remote-cache-sdk&utm_campaign=free_remote_cache).
+### "EADDRINUSE: address already in use" (3000/5000)
 
-Turborepo can use a technique known as [Remote Caching](https://turborepo.dev/docs/core-concepts/remote-caching) to share cache artifacts across machines, enabling you to share build caches with your team and CI/CD pipelines.
+This means you already have a previous dev server still running on that port.
 
-By default, Turborepo will cache locally. To enable Remote Caching you will need an account with Vercel. If you don't have an account you can [create one](https://vercel.com/signup?utm_source=turborepo-examples), then enter the following commands:
+- Stop it by going to that terminal and pressing `Ctrl+C`.
+- Or on Windows, find & kill the process using PowerShell:
 
-With [global `turbo`](https://turborepo.dev/docs/getting-started/installation#global-installation) installed (recommended):
+```powershell
+# show which PID is listening on the port
+Get-NetTCPConnection -LocalPort 3000 -State Listen | Select-Object LocalPort,OwningProcess
 
-```sh
-cd my-turborepo
-turbo login
+# kill it (replace PID)
+Stop-Process -Id 12345 -Force
 ```
-
-Without global `turbo`, use your package manager:
-
-```sh
-cd my-turborepo
-npx turbo login
-pnpm exec turbo login
-pnpm exec turbo login
-```
-
-This will authenticate the Turborepo CLI with your [Vercel account](https://vercel.com/docs/concepts/personal-accounts/overview).
-
-Next, you can link your Turborepo to your Remote Cache by running the following command from the root of your Turborepo:
-
-With [global `turbo`](https://turborepo.dev/docs/getting-started/installation#global-installation) installed:
-
-```sh
-turbo link
-```
-
-Without global `turbo`:
-
-```sh
-npx turbo link
-pnpm exec turbo link
-pnpm exec turbo link
-```
-
-## Useful Links
-
-Learn more about the power of Turborepo:
-
-- [Tasks](https://turborepo.dev/docs/crafting-your-repository/running-tasks)
-- [Caching](https://turborepo.dev/docs/crafting-your-repository/caching)
-- [Remote Caching](https://turborepo.dev/docs/core-concepts/remote-caching)
-- [Filtering](https://turborepo.dev/docs/crafting-your-repository/running-tasks#using-filters)
-- [Configuration Options](https://turborepo.dev/docs/reference/configuration)
-- [CLI Usage](https://turborepo.dev/docs/reference/command-line-reference)

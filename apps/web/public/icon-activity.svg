@@ -1,0 +1,18 @@
+<svg width="96" height="96" viewBox="0 0 96 96" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="act" x1="8" y1="10" x2="90" y2="90" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F97316"/>
+      <stop offset="0.5" stop-color="#EF4444"/>
+      <stop offset="1" stop-color="#7C3AED"/>
+    </linearGradient>
+  </defs>
+
+  <circle cx="44" cy="52" r="34" fill="url(#act)"/>
+  <circle cx="72" cy="30" r="16" fill="#06B6D4" fill-opacity="0.85"/>
+
+  <!-- simple runner / activity mark -->
+  <circle cx="43" cy="37" r="6" fill="#0B1220" fill-opacity="0.35"/>
+  <path d="M33 60L41 46L52 51L60 66" stroke="#0B1220" stroke-opacity="0.35" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M49 46L58 42" stroke="#0B1220" stroke-opacity="0.35" stroke-width="8" stroke-linecap="round"/>
+  <path d="M36 72L44 60" stroke="#0B1220" stroke-opacity="0.35" stroke-width="8" stroke-linecap="round"/>
+</svg>
