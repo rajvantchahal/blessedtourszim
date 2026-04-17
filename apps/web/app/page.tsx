@@ -1,169 +1,284 @@
-import styles from "./page.module.css";
 import Link from "next/link";
-import Image from "next/image";
+
+import MarketingShell from "./_components/MarketingShell";
+import styles from "./marketing.module.css";
+
+const trendingTrips = [
+  {
+    pill: "Most loved",
+    title: "Stay + Paragliding Adventure",
+    where: "Eastern Highlands",
+    price: "From $—",
+    bg: "https://images.unsplash.com/photo-1516483638261-f4dbaf036963?auto=format&fit=crop&w=900&q=80",
+  },
+  {
+    pill: "Best for families",
+    title: "Beach-style Stay with Water Sports",
+    where: "Kariba",
+    price: "From $—",
+    bg: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=900&q=80",
+  },
+  {
+    pill: "Top rated",
+    title: "Royal Stay & Cultural Tour",
+    where: "Great Zimbabwe",
+    price: "From $—",
+    bg: "https://images.unsplash.com/photo-1599661046289-e31897846e41?auto=format&fit=crop&w=900&q=80",
+  },
+  {
+    pill: "Adventure seeker",
+    title: "Stay + River Rafting",
+    where: "Victoria Falls",
+    price: "From $—",
+    bg: "https://images.unsplash.com/photo-1518509562904-e7ef99cdcc86?auto=format&fit=crop&w=900&q=80",
+  },
+];
 
 export default function Home() {
   return (
-    <div className={styles.page}>
-      <header className={styles.header}>
-        <div className={styles.brand}>
-          <span className={styles.brandName}>BlessedToursZim</span>
-          <span className={styles.brandTag}>Hotels • Sports • Activities</span>
-        </div>
-
-        <nav className={styles.nav}>
-          <a className={styles.navItem} href="#stays">
-            Stays
-          </a>
-          <a className={styles.navItem} href="#activities">
-            Activities
-          </a>
-          <a className={styles.navItem} href="#deals">
-            Deals
-          </a>
-          <Link className={styles.navLink} href="/login">
-            Login
-          </Link>
-          <Link className={styles.navLinkPrimary} href="/register">
-            Create account
-          </Link>
-        </nav>
-      </header>
-
-      <main className={styles.main}>
-        <section className={styles.hero}>
-          <div className={styles.heroMedia} aria-hidden>
-            <Image
-              src="/hero-illustration.svg"
-              alt=""
-              width={1200}
-              height={720}
-              className={styles.heroImage}
-              priority
-            />
+    <MarketingShell>
+      <section className={styles.hero}>
+        <div className={styles.heroInner}>
+          <div className={styles.heroCopy}>
+            <div className={styles.heroTitle}>
+              Plan Trips.
+              <br />
+              <span className={styles.heroTitleAccent}>Stay. Play. Explore.</span>
+            </div>
+            <p className={styles.heroText}>
+              Book Hotels + Discover Nearby Activities.
+              <br />
+              One Platform. One Memorable Trip.
+            </p>
           </div>
 
-          <div className={styles.heroContent}>
-            <h1 className={styles.heroTitle}>Find stays. Book activities. Travel happier.</h1>
-            <p className={styles.heroSubtitle}>
-              Discover great hotels and sports activities across Zimbabwe, then book in minutes.
-            </p>
-
-            <div className={styles.searchPanel}>
+          <div className={styles.heroSearch}>
+            <div className={styles.stickyBar}>
               <div className={styles.searchGrid}>
-                <label className={styles.searchField}>
-                  <span className={styles.searchLabel}>Destination</span>
-                  <input className={styles.searchInput} placeholder="City / resort / landmark" />
-                </label>
+                <div className={styles.field}>
+                  <span className={styles.label}>Where are you going?</span>
+                  <input className={styles.input} placeholder="Goa, Manali, Jaipur..." />
+                </div>
+                <div className={styles.field}>
+                  <span className={styles.label}>Check-in – Check-out</span>
+                  <input className={styles.input} placeholder="19 Jan – 25 Jan" />
+                </div>
+                <div className={styles.field}>
+                  <span className={styles.label}>Travelers</span>
+                  <input className={styles.input} placeholder="2 Adults, 1 Room" />
+                </div>
 
-                <label className={styles.searchField}>
-                  <span className={styles.searchLabel}>Check-in</span>
-                  <input className={styles.searchInput} type="date" />
-                </label>
+                <button className={styles.buttonPrimary} type="button">
+                  Explore Now
+                </button>
+              </div>
 
-                <label className={styles.searchField}>
-                  <span className={styles.searchLabel}>Check-out</span>
-                  <input className={styles.searchInput} type="date" />
-                </label>
+              <div className={styles.tagRow}>
+                <span className={styles.tag}>Popular Searches</span>
+                <span className={styles.tag}>Goa</span>
+                <span className={styles.tag}>Manali</span>
+                <span className={styles.tag}>Jaipur</span>
+                <span className={styles.tag}>Rishikesh</span>
+                <span className={styles.tag}>Andaman</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
-                <label className={styles.searchField}>
-                  <span className={styles.searchLabel}>Guests</span>
-                  <input className={styles.searchInput} type="number" min={1} defaultValue={2} />
-                </label>
+      <section className={styles.section}>
+        <div className={styles.sectionHead}>
+          <div>
+            <div className={styles.link} style={{ fontSize: 13, fontWeight: 900, letterSpacing: "1.1px" }}>
+              WHY CHOOSE BLESSEDTOURSZIM?
+            </div>
+            <h2 className={styles.sectionTitle}>More Than Just Stays</h2>
+            <p className={styles.sectionSub}>We help you plan complete experiences.</p>
+          </div>
+          <Link className={styles.link} href="/how-it-works">
+            Learn more
+          </Link>
+        </div>
 
-                <div className={styles.searchActions}>
-                  <button className={styles.searchButton} type="button">
-                    Search
-                  </button>
-                  <Link className={styles.searchLink} href="/register">
-                    Create an account for faster booking
-                  </Link>
+        <div className={styles.fourGrid}>
+          <div className={`${styles.toneCard} ${styles.toneCard1}`}>
+            <div className={styles.toneTitle}>Handpicked Hotels</div>
+            <div className={styles.toneText}>Comfort, quality, and great locations.</div>
+          </div>
+          <div className={`${styles.toneCard} ${styles.toneCard2}`}>
+            <div className={styles.toneTitle}>Exciting Activities</div>
+            <div className={styles.toneText}>Sports, events, and local experiences.</div>
+          </div>
+          <div className={`${styles.toneCard} ${styles.toneCard3}`}>
+            <div className={styles.toneTitle}>Perfectly Paired</div>
+            <div className={styles.toneText}>Stay close to the action with bundles.</div>
+          </div>
+          <div className={`${styles.toneCard} ${styles.toneCard4}`}>
+            <div className={styles.toneTitle}>Earn & Save</div>
+            <div className={styles.toneText}>Save with deals and simple rewards.</div>
+          </div>
+        </div>
+      </section>
+
+      <section className={styles.section}>
+        <div className={styles.sectionHead}>
+          <div>
+            <div className={styles.link} style={{ fontSize: 13, fontWeight: 900, letterSpacing: "1.1px" }}>
+              TRENDING NOW
+            </div>
+            <h2 className={styles.sectionTitle}>Trips People Love</h2>
+            <p className={styles.sectionSub}>Popular bundles to kickstart planning.</p>
+          </div>
+          <Link className={styles.link} href="/combos">
+            View all
+          </Link>
+        </div>
+
+        <div className={styles.tripGrid}>
+          {trendingTrips.map((t) => (
+            <div
+              key={t.title}
+              className={styles.tripCard}
+              style={{ backgroundImage: `url('${t.bg}')` }}
+            >
+              <div className={styles.tripContent}>
+                <div className={styles.tripPillRow}>
+                  <span className={styles.tripPill}>{t.pill}</span>
+                  <span className={styles.tripPill} aria-hidden>
+                    ♥
+                  </span>
+                </div>
+
+                <div>
+                  <small className={styles.tripSmall}>{t.where}</small>
+                  <div className={styles.tripTitle}>{t.title}</div>
+                  <div className={styles.tripLine}>Hotel • Stay • Activities</div>
+                  <div className={styles.tripFooter}>
+                    <span>{t.price}</span>
+                    <span>★ 4.8</span>
+                  </div>
                 </div>
               </div>
             </div>
+          ))}
+        </div>
+      </section>
 
-            <div className={styles.heroActions}>
-              <Link className={styles.primaryButton} href="/register">
-                Get started
+      <section className={styles.section}>
+        <div className={styles.vendorBox}>
+          <div>
+            <div className={styles.vendorKicker}>FOR VENDORS</div>
+            <div className={styles.vendorTitle}>List Your Hotel or Activity & Start Earning Today!</div>
+            <div className={styles.vendorText}>
+              Reach more travelers, package stays with activities, and grow your bookings.
+            </div>
+            <Link className={styles.vendorButton} href="/for-hotel-owners">
+              List Your Property
+            </Link>
+          </div>
+
+          <div className={styles.vendorMock} aria-hidden>
+            <div className={styles.vendorScreen}>
+              <div className={styles.vendorBars}>
+                <div className={styles.vendorBar} />
+                <div className={styles.vendorBar} />
+                <div className={styles.vendorBar} />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className={styles.section}>
+        <div className={styles.sectionHead}>
+          <div>
+            <div className={styles.link} style={{ fontSize: 13, fontWeight: 900, letterSpacing: "1.1px" }}>
+              TRUSTED & SAVED
+            </div>
+            <h2 className={styles.sectionTitle}>Travelers plan with confidence</h2>
+            <p className={styles.sectionSub}>Clear policies, support, and verified listings.</p>
+          </div>
+        </div>
+
+        <div className={styles.statsRow}>
+          <div className={styles.stat}>
+            <div className={styles.statIcon}>🏨</div>
+            <div>
+              <strong className={styles.statStrong}>Hotels & Activities</strong>
+              <span className={styles.statSpan}>Curated listings</span>
+            </div>
+          </div>
+          <div className={styles.stat}>
+            <div className={styles.statIcon}>🕒</div>
+            <div>
+              <strong className={styles.statStrong}>Support</strong>
+              <span className={styles.statSpan}>Fast responses</span>
+            </div>
+          </div>
+          <div className={styles.stat}>
+            <div className={styles.statIcon}>🔒</div>
+            <div>
+              <strong className={styles.statStrong}>Secure</strong>
+              <span className={styles.statSpan}>Safer checkout</span>
+            </div>
+          </div>
+          <div className={styles.stat}>
+            <div className={styles.statIcon}>⭐</div>
+            <div>
+              <strong className={styles.statStrong}>Top rated</strong>
+              <span className={styles.statSpan}>Trusted by users</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className={styles.section}>
+        <div className={styles.sectionHead}>
+          <div>
+            <div className={styles.link} style={{ fontSize: 13, fontWeight: 900, letterSpacing: "1.1px" }}>
+              FROM THE BLOG
+            </div>
+            <h2 className={styles.sectionTitle}>Tips for better trips</h2>
+            <p className={styles.sectionSub}>Short reads to help you plan faster.</p>
+          </div>
+          <Link className={styles.link} href="/blog">
+            View blog
+          </Link>
+        </div>
+
+        <div className={styles.grid}>
+          <div className={styles.card}>
+            <div className={styles.cardTitle}>How to plan a stay + experience weekend</div>
+            <div className={styles.cardText}>A quick checklist to book your hotel and activities together.</div>
+            <div className={styles.cardMeta}>
+              <span>~3 min read</span>
+              <Link className={styles.link} href="/blog">
+                Read
               </Link>
-              <Link className={styles.secondaryButton} href="/login">
-                I already have an account
+            </div>
+          </div>
+          <div className={styles.card}>
+            <div className={styles.cardTitle}>Top destinations in Zimbabwe</div>
+            <div className={styles.cardText}>Build your itinerary with stays + activities in one place.</div>
+            <div className={styles.cardMeta}>
+              <span>~4 min read</span>
+              <Link className={styles.link} href="/blog">
+                Read
               </Link>
             </div>
-
-            <div className={styles.heroMeta}>
-              <span className={styles.pill}>Verified vendors</span>
-              <span className={styles.pill}>Secure bookings</span>
-              <span className={styles.pill}>Fast support</span>
+          </div>
+          <div className={styles.card}>
+            <div className={styles.cardTitle}>What to look for when booking tours</div>
+            <div className={styles.cardText}>Simple tips to pick experiences that match your travel style.</div>
+            <div className={styles.cardMeta}>
+              <span>~3 min read</span>
+              <Link className={styles.link} href="/blog">
+                Read
+              </Link>
             </div>
           </div>
-        </section>
-
-        <section className={styles.tiles}>
-          <a id="stays" className={styles.tile} href="#">
-            <Image src="/tile-stays.svg" alt="" width={1200} height={800} className={styles.tileImage} />
-            <div className={styles.tileContent}>
-              <div className={styles.tileKicker}>STAYS</div>
-              <div className={styles.tileTitle}>Hotels & resorts</div>
-              <div className={styles.tileText}>Find verified stays for every budget.</div>
-            </div>
-          </a>
-
-          <a id="activities" className={styles.tile} href="#">
-            <Image
-              src="/tile-activities.svg"
-              alt=""
-              width={1200}
-              height={800}
-              className={styles.tileImage}
-            />
-            <div className={styles.tileContent}>
-              <div className={styles.tileKicker}>ACTIVITIES</div>
-              <div className={styles.tileTitle}>Sports & adventures</div>
-              <div className={styles.tileText}>Book experiences with trusted hosts.</div>
-            </div>
-          </a>
-
-          <a id="deals" className={styles.tile} href="#">
-            <Image src="/tile-deals.svg" alt="" width={1200} height={800} className={styles.tileImage} />
-            <div className={styles.tileContent}>
-              <div className={styles.tileKicker}>DEALS</div>
-              <div className={styles.tileTitle}>Bundles & offers</div>
-              <div className={styles.tileText}>Save more when you book together.</div>
-            </div>
-          </a>
-        </section>
-
-        <section className={styles.featured}>
-          <div className={styles.sectionHead}>
-            <h2 className={styles.sectionTitle}>Featured right now</h2>
-            <p className={styles.sectionSub}>A few popular choices to start with.</p>
-          </div>
-
-          <div className={styles.featureGrid}>
-            <div className={styles.featureCard}>
-              <div className={styles.featureBadge}>Top stay</div>
-              <div className={styles.featureName}>Victoria Falls weekend</div>
-              <div className={styles.featureMeta}>2 nights • Great views</div>
-            </div>
-            <div className={styles.featureCard}>
-              <div className={styles.featureBadge}>Top activity</div>
-              <div className={styles.featureName}>Outdoor sports day</div>
-              <div className={styles.featureMeta}>Team-friendly • All levels</div>
-            </div>
-            <div className={styles.featureCard}>
-              <div className={styles.featureBadge}>Bundle</div>
-              <div className={styles.featureName}>Stay + activities pack</div>
-              <div className={styles.featureMeta}>Flexible options</div>
-            </div>
-          </div>
-        </section>
-      </main>
-
-      <footer className={styles.footer}>
-        <span className={styles.footerText}>BlessedToursZim</span>
-        <span className={styles.footerHint}>Hotels • Sports • Activities</span>
-      </footer>
-    </div>
+        </div>
+      </section>
+    </MarketingShell>
   );
 }
